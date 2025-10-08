@@ -15,7 +15,14 @@ export default function Home() {
           {message.parts.map((part, i) => {
             switch (part.type) {
               case "text":
-                return <div key={`${message.id}-${i}`}>{part.text}</div>;
+                return <div key={`${message.id}-${i}`}>{part.text}</div>
+              case 'tool-weather':
+              case 'tool-convertFahrenheitToCelsius':
+                return (
+                  <pre key={`${message.id}-${i}`}>
+                    {JSON.stringify(part, null, 2)}
+                  </pre>
+                )  
             }
           })}
         </div>
